@@ -9,7 +9,7 @@ A browser extension for **Chrome, Edge, Brave, Chromium, and Firefox** that down
 
 ## 🚀 Installation (3 Steps)
 
-### 1️⃣ Install the required tools
+### 1️⃣ Install the required tools (you can skip this step if you already have yt-dlp installed and working)
 
 Run `yt-dlp.bat`.
 
