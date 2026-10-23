@@ -14,10 +14,10 @@ when it's done it will make a folder "ytdlp-tools"
 
 Note: if you moved the folder elsewehere after running "yt-dlp.bat" just open the folder and run "relink-path.bat" it will repair the PATH for you.
 
-### 2. Register the helper
-Unzip this folder somewhere permanent (don't move it afterwards), then:
+### 2. Run the installer
+Unzip yt-dlp-bridge.zip somewhere permanent (don't move it afterwards), then:
 
-    python install.py          # Windows: py install.py
+Run install.py 
 
 
 ### 2. Load the extension
