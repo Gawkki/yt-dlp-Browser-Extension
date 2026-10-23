@@ -1,63 +1,129 @@
-# yt-dlp-Browser-Extension
+# 🎬 yt-dlp-Browser-Extension
 
-A browser extension (Chrome, Edge, Brave, Chromium, Firefox) that downloads the current
-page's video/audio with yt-dlp on your own computer.
+A browser extension for **Chrome, Edge, Brave, Chromium, and Firefox** that downloads video and audio from the current page using `yt-dlp` directly on your computer.
 
-## Requirements
-- Python 3.8 or above https://www.python.org/downloads/ Make sure "Add Python to PATH" is checked.
+## 📋 Requirements
 
-## Install (3 steps)
+- 🐍 **Python 3.8 or above:** [Download Python](https://www.python.org/downloads/)
+  - ⚠️ During installation, make sure to check **"Add Python to PATH"**.
 
-### 1. Run yt-dlp.bat 
-(it will automatically download and install the latest yt-dlp, deno, ffmpeg and adds them to PATH)
-when it's done it will make a folder "ytdlp-tools"
+## 🚀 Installation (3 Steps)
 
-Note: if you moved the folder elsewehere after running "yt-dlp.bat" just open the folder and run "relink-path.bat" it will repair the PATH for you.
+### 1️⃣ Install the required tools
 
-### 2. Run the installer
-Unzip yt-dlp-bridge.zip somewhere permanent (don't move it afterwards), then:
+Run `yt-dlp.bat`.
 
-Run install.py 
+It automatically downloads and installs the latest versions of **yt-dlp, Deno, and FFmpeg**, then adds them to your `PATH`.
+
+✅ Once finished, it creates a folder named `ytdlp-tools`.
+
+> Note: if you moved the folder elsewehere after running "yt-dlp.bat" just open the folder and run "relink-path.bat" it will repair the PATH for you.
+
+### 2️⃣ Install the native messaging host
+
+📦 Extract `yt-dlp-bridge.zip` to a permanent location. **Don't move the folder after installation.**
+
+▶️ Open the extracted folder and run:
+
+Run install.py
+
+### 3️⃣ Load the browser extension
+
+Choose the instructions for your browser:
+
+#### 🌐 Chrome / Edge / Brave / Chromium
+
+1. Open `chrome://extensions` (for Edge, use `edge://extensions`).
+2. Enable **Developer mode**.
+3. Click **Load unpacked**.
+4. Select the `extension` folder.
 
 
-### 2. Load the extension
-- **Chrome / Edge / Brave:** open `chrome://extensions` (or `edge://extensions`),
-  turn on Developer mode, click "Load unpacked", pick the `extension` folder.
-  The extension ID is fixed, so there is nothing to copy.
-- **Firefox:** run `python build_firefox.py` once (it makes `extension-firefox/`, because
-  Firefox needs a slightly different manifest), then open
-  `about:debugging#/runtime/this-firefox`, "Load Temporary Add-on", and pick
-  `extension-firefox/manifest.json`. (Temporary add-ons are removed when Firefox
-  closes; a permanent install needs the add-on signed.)
+#### 🦊 For Firefox
 
-Then **fully quit and reopen the browser** once.
+1. Open a terminal in the extracted folder.
+2. Run the following command to generate the Firefox-compatible extension:
 
-## Use
-Click the extension icon on a video page, pick a format, press Download.
-You can also right-click a link or page: "Download ... with yt-dlp".
-Files go to `~/Downloads/yt-dlp-bridge` unless you set a folder.
+   ```bash
+   python build_firefox.py
+   ```
 
-### Videos that need you to be logged in
-Set **Use login from** to **This browser**. The extension reads that site's cookies
-itself (after you approve a permission prompt for that site) and hands them to yt-dlp
-for that one download; the temporary file is deleted afterwards. The other entries
-(Firefox, Chrome, Brave...) make yt-dlp read the browser's cookie database directly,
-which often fails for Chromium browsers on Windows while the browser is open.
+3. Open `about:debugging#/runtime/this-firefox`.
+4. Click **Load Temporary Add-on**.
+5. Select `extension-firefox/manifest.json`.
 
-Optional `host/config.json`:
+⚠️ **Note:** Temporary add-ons are removed when Firefox closes. A permanent installation requires the add-on to be signed.
 
-    {"ytdlp_path": "C:\\tools\\yt-dlp.exe", "ffmpeg_path": "...", "download_dir": "D:\\Videos"}
+🔄 **Finally, fully close and reopen your browser** after completing the installation.
 
-## Troubleshooting
-- IMPORTANT:sometimes yt-dlp could break when it falls behind in updates. If downloads start failing, re-run "yt-dlp.bat" to update everything.
+## 🎮 Usage
 
-- **"Specified native messaging host not found"**: run `python install.py --browser <name>`
-  for the browser you actually use, then fully restart it. Run `python install.py --test`
-  to confirm the helper starts.
-- **Snap/Flatpak browsers** are sandboxed and often cannot run the helper; use the
-  regular .deb/.rpm or the official tarball build instead.
-- **Cancel**: stops yt-dlp and any ffmpeg it started. Partial `.part` files stay in the
-  folder, so downloading the same link again resumes.
-- **"yt-dlp not found"**: install it, or set `ytdlp_path` in `host/config.json`.
-- **YouTube 403 / sign-in errors**: update yt-dlp (`yt-dlp -U`) and try "Use login from" your browser.
-- Remove everything: `python install.py --uninstall`.
+1. 🌐 Open a page containing a video or audio source.
+2. 🖱️ Click the extension icon.
+3. ⚙️ Choose your preferred format.
+4. ⬇️ Press **Download**.
+
+💡 You can also right-click a link or page and select **"Download ... with yt-dlp"**.
+
+📁 **Default download location:** `~/Downloads/yt-dlp-bridge`
+
+You can change the download folder using the optional configuration below.
+
+### 🔐 Download videos that require login
+
+For videos that require you to be logged in:
+
+1. Open the extension's settings.
+2. Set **Use login from** to **This browser**.
+3. Approve the site's permission prompt when requested.
+4. Start the download.
+
+🔒 The extension reads the site's cookies itself and passes them to `yt-dlp` for that download. The temporary cookie file is deleted afterward.
+
+💡 Other options, such as Firefox, Chrome, and Brave, make `yt-dlp` read the browser's cookie database directly. This can fail with Chromium-based browsers on Windows while the browser is open.
+
+### ⚙️ Optional configuration
+
+You can customize the executable paths and download directory in `host/config.json`:
+
+```json
+{
+  "ytdlp_path": "C:\\tools\\yt-dlp.exe",
+  "ffmpeg_path": "...",
+  "download_dir": "D:\\Videos"
+}
+```
+
+## 🛠️ Troubleshooting
+
+- 🔄 **Downloads suddenly stop working:** `yt-dlp` can fall behind when websites change. Re-run `yt-dlp.bat` to update the tools.
+
+- 🔌 **"Specified native messaging host not found":** Run the installer for your browser:
+
+  ```bash
+  python install.py --browser <name>
+  ```
+
+  Then fully restart the browser. To verify that the helper starts correctly, run:
+
+  ```bash
+  python install.py --test
+  ```
+
+- 🐧 **Snap / Flatpak browsers:** These browsers are sandboxed and may be unable to run the native messaging host. Try the regular `.deb` / `.rpm` package or the official tarball build instead.
+
+- 🛑 **Cancel a download:** Cancelling stops `yt-dlp` and any FFmpeg process it started. Partial `.part` files remain, allowing the download to resume when you download the same link again.
+
+- ❌ **"yt-dlp not found":** Install `yt-dlp` or set `ytdlp_path` in `host/config.json`.
+
+- 🔑 **YouTube 403 / sign-in errors:** Update `yt-dlp` and try setting **Use login from** to **This browser**.
+
+  ```bash
+  yt-dlp -U
+  ```
+
+- 🗑️ **Uninstall everything:** Run the following command from the extracted installer folder:
+
+  ```bash
+  python install.py --uninstall
+  ```
