@@ -1,6 +1,6 @@
 # 🎬 yt-dlp-Browser-Extension
 
-A browser extension for **Chrome, Edge, Brave, Chromium, and Firefox** that downloads video and audio from the current page using `yt-dlp` directly on your computer.
+A browser extension for **Chrome, Edge, Brave, Chromium, and Firefox** that downloads video and audio from the current page using `yt-dlp` directly on your computer. The entire process is automated and easy to set up!
 
 ## 📋 Requirements
 
@@ -25,7 +25,9 @@ It automatically downloads and installs the latest versions of **yt-dlp, Deno, a
 
 ▶️ Open the extracted folder and run:
 
-Run install.py
+   ```bash
+   Run install.py
+   ```
 
 ### 3️⃣ Load the browser extension
 
@@ -45,7 +47,7 @@ Choose the instructions for your browser:
 2. Run the following command to generate the Firefox-compatible extension:
 
    ```bash
-   python build_firefox.py
+   Run build_firefox.py
    ```
 
 3. Open `about:debugging#/runtime/this-firefox`.
@@ -61,7 +63,7 @@ Choose the instructions for your browser:
 1. 🌐 Open a page containing a video or audio source.
 2. 🖱️ Click the extension icon.
 3. ⚙️ Choose your preferred format.
-4. ⬇️ Press **Download**.
+4. ⬇️ Press **Download**. 🎉🎉🎉🎉🎉🎉
 
 💡 You can also right-click a link or page and select **"Download ... with yt-dlp"**.
 
