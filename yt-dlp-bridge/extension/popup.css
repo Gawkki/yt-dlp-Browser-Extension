@@ -1,0 +1,76 @@
+:root {
+  --paper: #f2f4f1;
+  --field: #ffffff;
+  --ink: #17201c;
+  --muted: #5d6a64;
+  --line: #cdd5d0;
+  --accent: #1f6f5c;
+  --accent-ink: #ffffff;
+  --bad: #b3372f;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #151b18;
+    --field: #1e2622;
+    --ink: #e6ece8;
+    --muted: #93a39a;
+    --line: #34413b;
+    --accent: #4fb89b;
+    --accent-ink: #0d1411;
+    --bad: #ee7b72;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  width: 340px;
+  margin: 0;
+  padding: 14px;
+  background: var(--paper);
+  color: var(--ink);
+  font: 13px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+label { display: block; margin: 10px 0 3px; color: var(--muted); font-size: 12px; }
+input, select {
+  width: 100%;
+  padding: 7px 8px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--field);
+  color: var(--ink);
+  font: inherit;
+}
+input:focus-visible, select:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.host { margin: 0; color: var(--muted); font-size: 12px; }
+.host.ok::before, .host.bad::before {
+  content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 6px; border-radius: 50%;
+  background: var(--accent);
+}
+.host.bad { color: var(--bad); }
+.host.bad::before { background: var(--bad); }
+#go {
+  width: 100%;
+  margin-top: 14px;
+  padding: 9px;
+  border: 0;
+  border-radius: 4px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+#go:disabled { opacity: .5; cursor: default; }
+.jobs { list-style: none; margin: 14px 0 0; padding: 0; }
+.jobs li { padding: 9px 0; border-top: 1px solid var(--line); }
+.jobs .top { display: flex; justify-content: space-between; gap: 8px; }
+.jobs .name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.jobs .meta { color: var(--muted); font-size: 12px; margin-top: 3px; word-break: break-word; }
+.jobs .err { color: var(--bad); }
+.bar { height: 4px; margin-top: 6px; border-radius: 2px; background: var(--line); overflow: hidden; }
+.bar > i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .3s; }
+button.link { padding: 0; border: 0; background: none; color: var(--muted); font: inherit; text-decoration: underline; cursor: pointer; }
+.jobs button.link { flex: none; }
+#clear { margin-top: 8px; }
+.note { margin: 8px 0 0; color: var(--bad); font-size: 12px; }

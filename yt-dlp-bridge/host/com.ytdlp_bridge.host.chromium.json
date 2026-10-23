@@ -1,0 +1,9 @@
+{
+  "name": "com.ytdlp_bridge.host",
+  "description": "yt-dlp Bridge native host",
+  "path": "C:\\Users\\PC\\Documents\\Programs\\yt-dlp-bridge\\host\\run_host.bat",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://aihkkhgjlgelmdmkmbmlahamadifokdl/"
+  ]
+}
