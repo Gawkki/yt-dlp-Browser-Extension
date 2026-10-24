@@ -1,4 +1,4 @@
-# 🎬 yt-dlp-Browser-Extension
+# 🎬 yt-dlp auto installation + browser-extension
 
 A browser extension for **Chrome, Edge, Brave, Chromium, and Firefox** that downloads video and audio from the current page using `yt-dlp` directly on your computer. The entire process is automated and easy to set up!
 
